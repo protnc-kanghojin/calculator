@@ -163,7 +163,7 @@ void calculator::multiply_Clicked()
 
 void calculator::division_Clicked()
 {
-	ui.process->setText(ui.finalResult->text() + "¡À");
+	ui.process->setText(ui.finalResult->text() + "/");
 	m_leftNumber = ui.finalResult->text().toInt();
 
 	ui.finalResult->setText("");
