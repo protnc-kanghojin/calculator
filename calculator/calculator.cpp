@@ -18,8 +18,13 @@ calculator::calculator(QWidget* parent)
 	connect(ui.num8Btn, &QPushButton::clicked, this, &calculator::num8_Clicked);
 	connect(ui.num9Btn, &QPushButton::clicked, this, &calculator::num9_Clicked);
 	
-	// Number option function
+	// Calculation function
 	connect(ui.clearBtn, &QPushButton::clicked, this, &calculator::clear_Clicked);
+	connect(ui.resultBtn, &QPushButton::clicked, this, &calculator::result_Clicked);
+	connect(ui.plusBtn, &QPushButton::clicked, this, &calculator::plus_Clicked);
+	connect(ui.minusBtn, &QPushButton::clicked, this, &calculator::minus_Clicked);
+	connect(ui.multiplyBtn, &QPushButton::clicked, this, &calculator::multiply_Clicked);
+	connect(ui.divisionBtn, &QPushButton::clicked, this, &calculator::division_Clicked);
 }
 
 calculator::~calculator()
@@ -99,4 +104,93 @@ void calculator::num9_Clicked()
 void calculator::clear_Clicked()
 {
 	ui.finalResult->setText("");
+	ui.process->setText("");
+}
+
+void calculator::result_Clicked()
+{
+	switch (calculateStatus)
+	{
+	case 0:
+		plus_Calculation();
+		break;
+	case 1:
+		minus_Calculation();
+		break;
+	case 2:
+		multiply_Calculation();
+		break;
+	case 3:
+		division_Calculation();
+		break;
+	}
+
+}
+
+void calculator::plus_Clicked()
+{
+	ui.process->setText(ui.finalResult->text() + "+");
+	leftNumber = ui.finalResult->text().toInt();
+
+	ui.finalResult->setText("");
+	calculateStatus = 0;
+}
+
+void calculator::minus_Clicked()
+{
+	ui.process->setText(ui.finalResult->text() + "-");
+	leftNumber = ui.finalResult->text().toInt();
+
+	ui.finalResult->setText("");
+	calculateStatus = 1;
+}
+
+void calculator::multiply_Clicked()
+{
+	ui.process->setText(ui.finalResult->text() + "*");
+	leftNumber = ui.finalResult->text().toInt();
+
+	ui.finalResult->setText("");
+	calculateStatus = 2;
+}
+
+void calculator::division_Clicked()
+{
+	ui.process->setText(ui.finalResult->text() + "¡À");
+	leftNumber = ui.finalResult->text().toInt();
+
+	ui.finalResult->setText("");
+	calculateStatus = 3;
+}
+
+void calculator::plus_Calculation()
+{
+	result = leftNumber + ui.finalResult->text().toInt();
+
+	ui.process->setText(ui.process->text() + ui.finalResult->text());
+	ui.finalResult->setText(QString::number(result));
+}
+
+void calculator::minus_Calculation()
+{
+	result = leftNumber - ui.finalResult->text().toInt();
+
+	ui.process->setText(ui.process->text() + ui.finalResult->text());
+	ui.finalResult->setText(QString::number(result));
+}
+
+void calculator::multiply_Calculation()
+{
+	result = leftNumber * ui.finalResult->text().toInt();
+
+	ui.process->setText(ui.process->text() + ui.finalResult->text());
+	ui.finalResult->setText(QString::number(result));
+}
+
+void calculator::division_Calculation()
+{
+	result = leftNumber / ui.finalResult->text().toInt();
+
+	ui.process->setText(ui.process->text() + ui.finalResult->text());
+	ui.finalResult->setText(QString::number(result));
 }

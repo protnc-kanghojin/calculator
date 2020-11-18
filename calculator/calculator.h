@@ -13,10 +13,16 @@ public:
     calculator(QWidget *parent = Q_NULLPTR);
     ~calculator();
 
+    void plus_Calculation();
+    void minus_Calculation();
+    void multiply_Calculation();
+    void division_Calculation();
+
 private:
     Ui::calculatorClass ui;
 
-    QVector <int> m_firstNumber;
+    int calculateStatus;
+    int leftNumber, rightNumber, result;
 
 public slots:
     // Number button click function
@@ -31,6 +37,11 @@ public slots:
     void num8_Clicked();
     void num9_Clicked();
 
-    // Number option function
+    // Calculation function
     void clear_Clicked();
+    void result_Clicked();
+    void plus_Clicked();
+    void minus_Clicked();
+    void multiply_Clicked();
+    void division_Clicked();
 };
