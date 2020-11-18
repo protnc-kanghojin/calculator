@@ -105,6 +105,9 @@ void calculator::clear_Clicked()
 {
 	ui.finalResult->setText("");
 	ui.process->setText("");
+	ui.hexResult->setText("");
+	ui.octResult->setText("");
+	ui.binResult->setText("");
 }
 
 void calculator::result_Clicked()
