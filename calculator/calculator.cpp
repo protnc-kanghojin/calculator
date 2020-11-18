@@ -107,7 +107,7 @@ void calculator::clear_Clicked()
 	ui.process->setText("");
 }
 
-void calculator::m_result_Clicked()
+void calculator::result_Clicked()
 {
 	switch (m_calculateStatus)
 	{
@@ -128,6 +128,7 @@ void calculator::m_result_Clicked()
 	}
 
 	m_calculateStatus = -1;
+	numberConversion();
 }
 
 void calculator::plus_Clicked()
@@ -196,4 +197,35 @@ void calculator::division_Calculation()
 
 	ui.process->setText(ui.process->text() + ui.finalResult->text());
 	ui.finalResult->setText(QString::number(m_result));
+}
+
+void calculator::numberConversion()
+{
+	decToBin();
+	decToOct();
+	decToHex();
+}
+
+void calculator::decToBin()
+{
+	QString bin;
+	bin = QString("%1").arg(ui.finalResult->text().toInt(), 0, 2);
+
+	ui.binResult->setText(bin);
+}
+
+void calculator::decToOct()
+{
+	QString oct;
+	oct = QString("%1").arg(ui.finalResult->text().toInt(), 0, 8);
+
+	ui.octResult->setText(oct);
+}
+
+void calculator::decToHex()
+{
+	QString hex;
+	hex = QString("%1").arg(ui.finalResult->text().toInt(), 0, 16);
+
+	ui.hexResult->setText(hex);
 }

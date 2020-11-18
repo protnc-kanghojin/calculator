@@ -18,6 +18,11 @@ public:
     void multiply_Calculation();
     void division_Calculation();
 
+    void numberConversion();
+    void decToBin();
+    void decToOct();
+    void decToHex();
+
 private:
     Ui::calculatorClass ui;
 
