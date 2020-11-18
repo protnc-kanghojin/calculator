@@ -21,8 +21,7 @@ public:
 private:
     Ui::calculatorClass ui;
 
-    int calculateStatus;
-    int leftNumber, rightNumber, result;
+    int m_calculateStatus, m_leftNumber, m_result;
 
 public slots:
     // Number button click function

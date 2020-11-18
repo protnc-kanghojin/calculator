@@ -33,72 +33,72 @@ calculator::~calculator()
 
 void calculator::num0_Clicked()
 {
-	int result = ui.num0Btn->text().toInt();
+	int m_result = ui.num0Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num1_Clicked()
 {
-	int result = ui.num1Btn->text().toInt();
+	int m_result = ui.num1Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num2_Clicked()
 {
-	int result = ui.num2Btn->text().toInt();
+	int m_result = ui.num2Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num3_Clicked()
 {
-	int result = ui.num3Btn->text().toInt();
+	int m_result = ui.num3Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num4_Clicked()
 {
-	int result = ui.num4Btn->text().toInt();
+	int m_result = ui.num4Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num5_Clicked()
 {
-	int result = ui.num5Btn->text().toInt();
+	int m_result = ui.num5Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num6_Clicked()
 {
-	int result = ui.num6Btn->text().toInt();
+	int m_result = ui.num6Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num7_Clicked()
 {
-	int result = ui.num7Btn->text().toInt();
+	int m_result = ui.num7Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num8_Clicked()
 {
-	int result = ui.num8Btn->text().toInt();
+	int m_result = ui.num8Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::num9_Clicked()
 {
-	int result = ui.num9Btn->text().toInt();
+	int m_result = ui.num9Btn->text().toInt();
 
-	ui.finalResult->setText(ui.finalResult->text() + QString::number(result));
+	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
 void calculator::clear_Clicked()
@@ -107,9 +107,9 @@ void calculator::clear_Clicked()
 	ui.process->setText("");
 }
 
-void calculator::result_Clicked()
+void calculator::m_result_Clicked()
 {
-	switch (calculateStatus)
+	switch (m_calculateStatus)
 	{
 	case 0:
 		plus_Calculation();
@@ -123,74 +123,77 @@ void calculator::result_Clicked()
 	case 3:
 		division_Calculation();
 		break;
+	default:
+		break;
 	}
 
+	m_calculateStatus = -1;
 }
 
 void calculator::plus_Clicked()
 {
 	ui.process->setText(ui.finalResult->text() + "+");
-	leftNumber = ui.finalResult->text().toInt();
+	m_leftNumber = ui.finalResult->text().toInt();
 
 	ui.finalResult->setText("");
-	calculateStatus = 0;
+	m_calculateStatus = 0;
 }
 
 void calculator::minus_Clicked()
 {
 	ui.process->setText(ui.finalResult->text() + "-");
-	leftNumber = ui.finalResult->text().toInt();
+	m_leftNumber = ui.finalResult->text().toInt();
 
 	ui.finalResult->setText("");
-	calculateStatus = 1;
+	m_calculateStatus = 1;
 }
 
 void calculator::multiply_Clicked()
 {
 	ui.process->setText(ui.finalResult->text() + "*");
-	leftNumber = ui.finalResult->text().toInt();
+	m_leftNumber = ui.finalResult->text().toInt();
 
 	ui.finalResult->setText("");
-	calculateStatus = 2;
+	m_calculateStatus = 2;
 }
 
 void calculator::division_Clicked()
 {
 	ui.process->setText(ui.finalResult->text() + "¡À");
-	leftNumber = ui.finalResult->text().toInt();
+	m_leftNumber = ui.finalResult->text().toInt();
 
 	ui.finalResult->setText("");
-	calculateStatus = 3;
+	m_calculateStatus = 3;
 }
 
 void calculator::plus_Calculation()
 {
-	result = leftNumber + ui.finalResult->text().toInt();
+	m_result = m_leftNumber + ui.finalResult->text().toInt();
 
 	ui.process->setText(ui.process->text() + ui.finalResult->text());
-	ui.finalResult->setText(QString::number(result));
+	ui.finalResult->setText(QString::number(m_result));
 }
 
 void calculator::minus_Calculation()
 {
-	result = leftNumber - ui.finalResult->text().toInt();
+	m_result = m_leftNumber - ui.finalResult->text().toInt();
 
 	ui.process->setText(ui.process->text() + ui.finalResult->text());
-	ui.finalResult->setText(QString::number(result));
+	ui.finalResult->setText(QString::number(m_result));
 }
 
 void calculator::multiply_Calculation()
 {
-	result = leftNumber * ui.finalResult->text().toInt();
+	m_result = m_leftNumber * ui.finalResult->text().toInt();
 
 	ui.process->setText(ui.process->text() + ui.finalResult->text());
-	ui.finalResult->setText(QString::number(result));
+	ui.finalResult->setText(QString::number(m_result));
 }
 
 void calculator::division_Calculation()
 {
-	result = leftNumber / ui.finalResult->text().toInt();
+	m_result = m_leftNumber / ui.finalResult->text().toInt();
 
 	ui.process->setText(ui.process->text() + ui.finalResult->text());
-	ui.finalResult->setText(QString::number(result));
+	ui.finalResult->setText(QString::number(m_result));
 }
