@@ -6,6 +6,8 @@ calculator::calculator(QWidget* parent)
 	ui.setupUi(this);
 	this->setFixedSize(350, 500);
 
+	setDecMode();
+
 	// Number button click function
 	connect(ui.num0Btn, &QPushButton::clicked, this, &calculator::num0_Clicked);
 	connect(ui.num1Btn, &QPushButton::clicked, this, &calculator::num1_Clicked);
@@ -20,16 +22,103 @@ calculator::calculator(QWidget* parent)
 	
 	// Calculation function
 	connect(ui.clearBtn, &QPushButton::clicked, this, &calculator::clear_Clicked);
+	connect(ui.deleteBtn, &QPushButton::clicked, this, &calculator::delete_Clicked);
 	connect(ui.resultBtn, &QPushButton::clicked, this, &calculator::result_Clicked);
 	connect(ui.plusBtn, &QPushButton::clicked, this, &calculator::plus_Clicked);
 	connect(ui.minusBtn, &QPushButton::clicked, this, &calculator::minus_Clicked);
 	connect(ui.multiplyBtn, &QPushButton::clicked, this, &calculator::multiply_Clicked);
 	connect(ui.divisionBtn, &QPushButton::clicked, this, &calculator::division_Clicked);
 	connect(ui.remainderBtn, &QPushButton::clicked, this, &calculator::remainder_Clicked);
+
+	// Calculation mode
+	connect(ui.hexMode, &QPushButton::clicked, this, &calculator::setHexMode);
+	connect(ui.decMode, &QPushButton::clicked, this, &calculator::setDecMode);
+	connect(ui.octMode, &QPushButton::clicked, this, &calculator::setOctMode);
+	connect(ui.binMode, &QPushButton::clicked, this, &calculator::setBinMode);
 }
 
 calculator::~calculator()
 {
+}
+
+void calculator::setBinMode()
+{
+	ui.num0Btn->setEnabled(true);
+	ui.num1Btn->setEnabled(true);
+	ui.num2Btn->setEnabled(false);
+	ui.num3Btn->setEnabled(false);
+	ui.num4Btn->setEnabled(false);
+	ui.num5Btn->setEnabled(false);
+	ui.num6Btn->setEnabled(false);
+	ui.num7Btn->setEnabled(false);
+	ui.num8Btn->setEnabled(false);
+	ui.num9Btn->setEnabled(false);
+	ui.hexA_Btn->setEnabled(false);
+	ui.hexB_Btn->setEnabled(false);
+	ui.hexC_Btn->setEnabled(false);
+	ui.hexD_Btn->setEnabled(false);
+	ui.hexE_Btn->setEnabled(false);
+	ui.hexF_Btn->setEnabled(false);
+}
+
+void calculator::setOctMode()
+{
+	ui.num0Btn->setEnabled(true);
+	ui.num1Btn->setEnabled(true);
+	ui.num2Btn->setEnabled(true);
+	ui.num3Btn->setEnabled(true);
+	ui.num4Btn->setEnabled(true);
+	ui.num5Btn->setEnabled(true);
+	ui.num6Btn->setEnabled(true);
+	ui.num7Btn->setEnabled(true);
+	ui.num8Btn->setEnabled(false);
+	ui.num9Btn->setEnabled(false);
+	ui.hexA_Btn->setEnabled(false);
+	ui.hexB_Btn->setEnabled(false);
+	ui.hexC_Btn->setEnabled(false);
+	ui.hexD_Btn->setEnabled(false);
+	ui.hexE_Btn->setEnabled(false);
+	ui.hexF_Btn->setEnabled(false);
+}
+
+void calculator::setDecMode()
+{
+	ui.num0Btn->setEnabled(true);
+	ui.num1Btn->setEnabled(true);
+	ui.num2Btn->setEnabled(true);
+	ui.num3Btn->setEnabled(true);
+	ui.num4Btn->setEnabled(true);
+	ui.num5Btn->setEnabled(true);
+	ui.num6Btn->setEnabled(true);
+	ui.num7Btn->setEnabled(true);
+	ui.num8Btn->setEnabled(true);
+	ui.num9Btn->setEnabled(true);
+	ui.hexA_Btn->setEnabled(false);
+	ui.hexB_Btn->setEnabled(false);
+	ui.hexC_Btn->setEnabled(false);
+	ui.hexD_Btn->setEnabled(false);
+	ui.hexE_Btn->setEnabled(false);
+	ui.hexF_Btn->setEnabled(false);
+}
+
+void calculator::setHexMode()
+{
+	ui.num0Btn->setEnabled(true);
+	ui.num1Btn->setEnabled(true);
+	ui.num2Btn->setEnabled(true);
+	ui.num3Btn->setEnabled(true);
+	ui.num4Btn->setEnabled(true);
+	ui.num5Btn->setEnabled(true);
+	ui.num6Btn->setEnabled(true);
+	ui.num7Btn->setEnabled(true);
+	ui.num8Btn->setEnabled(true);
+	ui.num9Btn->setEnabled(true);
+	ui.hexA_Btn->setEnabled(true);
+	ui.hexB_Btn->setEnabled(true);
+	ui.hexC_Btn->setEnabled(true);
+	ui.hexD_Btn->setEnabled(true);
+	ui.hexE_Btn->setEnabled(true);
+	ui.hexF_Btn->setEnabled(true);
 }
 
 void calculator::num0_Clicked()
@@ -109,6 +198,11 @@ void calculator::clear_Clicked()
 	ui.hexResult->setText("");
 	ui.octResult->setText("");
 	ui.binResult->setText("");
+}
+
+void calculator::delete_Clicked()
+{
+
 }
 
 void calculator::result_Clicked()

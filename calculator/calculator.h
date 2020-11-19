@@ -13,6 +13,11 @@ public:
     calculator(QWidget *parent = Q_NULLPTR);
     ~calculator();
 
+    void setBinMode();
+    void setOctMode();
+    void setDecMode();
+    void setHexMode();
+
     void plus_Calculation();
     void minus_Calculation();
     void multiply_Calculation();
@@ -45,6 +50,7 @@ public slots:
 
     // Calculation function
     void clear_Clicked();
+    void delete_Clicked();
     void result_Clicked();
     void plus_Clicked();
     void minus_Clicked();
