@@ -4,7 +4,7 @@ calculator::calculator(QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-	this->setFixedSize(300, 500);
+	this->setFixedSize(350, 500);
 
 	// Number button click function
 	connect(ui.num0Btn, &QPushButton::clicked, this, &calculator::num0_Clicked);
@@ -25,6 +25,7 @@ calculator::calculator(QWidget* parent)
 	connect(ui.minusBtn, &QPushButton::clicked, this, &calculator::minus_Clicked);
 	connect(ui.multiplyBtn, &QPushButton::clicked, this, &calculator::multiply_Clicked);
 	connect(ui.divisionBtn, &QPushButton::clicked, this, &calculator::division_Clicked);
+	connect(ui.remainderBtn, &QPushButton::clicked, this, &calculator::remainder_Clicked);
 }
 
 calculator::~calculator()
@@ -126,6 +127,9 @@ void calculator::result_Clicked()
 	case 3:
 		division_Calculation();
 		break;
+	case 4:
+		remainder_Calculation();
+		break;
 	default:
 		break;
 	}
@@ -170,6 +174,15 @@ void calculator::division_Clicked()
 	m_calculateStatus = 3;
 }
 
+void calculator::remainder_Clicked()
+{
+	ui.process->setText(ui.finalResult->text() + "%");
+	m_leftNumber = ui.finalResult->text().toInt();
+
+	ui.finalResult->setText("");
+	m_calculateStatus = 4;
+}
+
 void calculator::plus_Calculation()
 {
 	m_result = m_leftNumber + ui.finalResult->text().toInt();
@@ -202,10 +215,19 @@ void calculator::division_Calculation()
 	ui.finalResult->setText(QString::number(m_result));
 }
 
+void calculator::remainder_Calculation()
+{
+	m_result = m_leftNumber % ui.finalResult->text().toInt();
+
+	ui.process->setText(ui.process->text() + ui.finalResult->text());
+	ui.finalResult->setText(QString::number(m_result));
+}
+
 void calculator::numberConversion()
 {
 	decToBin();
 	decToOct();
+	decToDec();
 	decToHex();
 }
 
@@ -224,6 +246,15 @@ void calculator::decToOct()
 
 	ui.octResult->setText(oct);
 }
+
+void calculator::decToDec()
+{
+	QString dec;
+	dec = QString("%1").arg(ui.finalResult->text().toInt(), 0, 10);
+
+	ui.decResult->setText(dec);
+}
+
 
 void calculator::decToHex()
 {

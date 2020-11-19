@@ -17,10 +17,12 @@ public:
     void minus_Calculation();
     void multiply_Calculation();
     void division_Calculation();
+    void remainder_Calculation();
 
     void numberConversion();
     void decToBin();
     void decToOct();
+    void decToDec();
     void decToHex();
 
 private:
@@ -48,4 +50,5 @@ public slots:
     void minus_Clicked();
     void multiply_Clicked();
     void division_Clicked();
+    void remainder_Clicked();
 };
