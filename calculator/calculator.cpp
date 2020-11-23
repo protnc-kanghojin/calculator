@@ -91,12 +91,11 @@ void calculator::keyPressEvent(QKeyEvent* event)
 		delete_Clicked();
 		break;
 
-	case Qt::Key_division:
+	case Qt::Key_Slash:
 		division_Clicked();
 		break;
 
-		// ToDo x -> *
-	case Qt::Key_X:
+	case Qt::Key_Asterisk:
 		multiply_Clicked();
 		break;
 
@@ -355,6 +354,10 @@ void calculator::result_Clicked()
 void calculator::plus_Clicked()
 {
 	ui.process->setText(ui.finalResult->text() + "+");
+	if (m_numberSystem == 0)
+	{
+
+	}
 	m_leftNumber = ui.finalResult->text().toInt();
 
 	ui.finalResult->setText("");
@@ -468,7 +471,6 @@ void calculator::decToDec()
 
 	ui.decResult->setText(dec);
 }
-
 
 void calculator::decToHex()
 {
