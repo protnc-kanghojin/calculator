@@ -41,6 +41,7 @@ calculator::calculator(QWidget* parent)
 
 calculator::~calculator()
 {
+
 }
 
 void calculator::keyPressEvent(QKeyEvent* event)
@@ -108,6 +109,10 @@ void calculator::keyPressEvent(QKeyEvent* event)
 		break;
 
 	case Qt::Key_Enter:
+		result_Clicked();
+		break;
+
+	case Qt::Key_Return:
 		result_Clicked();
 		break;
 
