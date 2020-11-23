@@ -35,9 +35,9 @@ private:
     Ui::calculatorClass ui;
 
     int m_calculateStatus, m_leftNumber, m_result;
-    int m_numberSystem; // 0 : bin
 
     QList <int> m_numberBoard;
+    QList <char> m_progress;
 
 public slots:
     // Number button click function

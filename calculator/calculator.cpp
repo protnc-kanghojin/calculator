@@ -125,7 +125,6 @@ void calculator::setBinMode()
 {
 	ui.mode->setText("BIN MODE");
 	clear_Clicked();
-	m_numberSystem = 0;
 
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
@@ -220,6 +219,7 @@ void calculator::num0_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num1_Clicked()
@@ -228,6 +228,7 @@ void calculator::num1_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num2_Clicked()
@@ -236,6 +237,7 @@ void calculator::num2_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num3_Clicked()
@@ -244,6 +246,7 @@ void calculator::num3_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num4_Clicked()
@@ -252,6 +255,7 @@ void calculator::num4_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num5_Clicked()
@@ -260,6 +264,7 @@ void calculator::num5_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num6_Clicked()
@@ -268,6 +273,7 @@ void calculator::num6_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num7_Clicked()
@@ -276,6 +282,7 @@ void calculator::num7_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num8_Clicked()
@@ -284,6 +291,7 @@ void calculator::num8_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::num9_Clicked()
@@ -292,6 +300,7 @@ void calculator::num9_Clicked()
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 	m_numberBoard.push_back(m_result);
+	m_progress.push_back(m_result);
 }
 
 void calculator::groupStart_Clicked()
@@ -312,6 +321,9 @@ void calculator::clear_Clicked()
 	ui.decResult->setText("");
 	ui.octResult->setText("");
 	ui.binResult->setText("");
+
+	m_numberBoard.clear();
+	m_progress.clear();
 }
 
 void calculator::delete_Clicked()
@@ -359,14 +371,13 @@ void calculator::result_Clicked()
 void calculator::plus_Clicked()
 {
 	ui.process->setText(ui.finalResult->text() + "+");
-	if (m_numberSystem == 0)
-	{
-
-	}
 	m_leftNumber = ui.finalResult->text().toInt();
 
 	ui.finalResult->setText("");
 	m_calculateStatus = 0;
+
+	m_numberBoard.clear();
+	m_progress.push_back('+');
 }
 
 void calculator::minus_Clicked()
@@ -376,6 +387,9 @@ void calculator::minus_Clicked()
 
 	ui.finalResult->setText("");
 	m_calculateStatus = 1;
+
+	m_numberBoard.clear();
+	m_progress.push_back('-');
 }
 
 void calculator::multiply_Clicked()
@@ -385,6 +399,9 @@ void calculator::multiply_Clicked()
 
 	ui.finalResult->setText("");
 	m_calculateStatus = 2;
+
+	m_numberBoard.clear();
+	m_progress.push_back('*');
 }
 
 void calculator::division_Clicked()
@@ -394,6 +411,9 @@ void calculator::division_Clicked()
 
 	ui.finalResult->setText("");
 	m_calculateStatus = 3;
+
+	m_numberBoard.clear();
+	m_progress.push_back('/');
 }
 
 void calculator::remainder_Clicked()
@@ -403,10 +423,14 @@ void calculator::remainder_Clicked()
 
 	ui.finalResult->setText("");
 	m_calculateStatus = 4;
+
+	m_numberBoard.clear();
+	m_progress.push_back('%');
 }
 
 void calculator::plus_Calculation()
 {
+	QString progress;
 	m_result = m_leftNumber + ui.finalResult->text().toInt();
 
 	ui.process->setText(ui.process->text() + ui.finalResult->text());
