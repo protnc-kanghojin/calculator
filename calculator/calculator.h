@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include <QVector>
+#include <QList>
 
 #include "ui_calculator.h"
 
@@ -57,4 +57,6 @@ public slots:
     void multiply_Clicked();
     void division_Clicked();
     void remainder_Clicked();
+    void groupStart_Clicked();
+    void groupEnd_Clicked();
 };

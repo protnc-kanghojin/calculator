@@ -29,6 +29,8 @@ calculator::calculator(QWidget* parent)
 	connect(ui.multiplyBtn, &QPushButton::clicked, this, &calculator::multiply_Clicked);
 	connect(ui.divisionBtn, &QPushButton::clicked, this, &calculator::division_Clicked);
 	connect(ui.remainderBtn, &QPushButton::clicked, this, &calculator::remainder_Clicked);
+	connect(ui.groupStartBtn, &QPushButton::clicked, this, &calculator::groupStart_Clicked);
+	connect(ui.groupEndBtn, &QPushButton::clicked, this, &calculator::groupEnd_Clicked);
 
 	// Calculation mode
 	connect(ui.hexMode, &QPushButton::clicked, this, &calculator::setHexMode);
@@ -43,6 +45,7 @@ calculator::~calculator()
 
 void calculator::setBinMode()
 {
+	clear_Clicked();
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(false);
@@ -63,6 +66,7 @@ void calculator::setBinMode()
 
 void calculator::setOctMode()
 {
+	clear_Clicked();
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(true);
@@ -83,6 +87,7 @@ void calculator::setOctMode()
 
 void calculator::setDecMode()
 {
+	clear_Clicked();
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(true);
@@ -103,6 +108,7 @@ void calculator::setDecMode()
 
 void calculator::setHexMode()
 {
+	clear_Clicked();
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(true);
@@ -191,18 +197,28 @@ void calculator::num9_Clicked()
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
 }
 
+void calculator::groupStart_Clicked()
+{
+	ui.finalResult->setText(ui.finalResult->text() + '(');
+}
+
+void calculator::groupEnd_Clicked()
+{
+	ui.finalResult->setText(ui.finalResult->text() + ')');
+}
+
 void calculator::clear_Clicked()
 {
 	ui.finalResult->setText("");
 	ui.process->setText("");
 	ui.hexResult->setText("");
+	ui.decResult->setText("");
 	ui.octResult->setText("");
 	ui.binResult->setText("");
 }
 
 void calculator::delete_Clicked()
 {
-
 }
 
 void calculator::result_Clicked()
