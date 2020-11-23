@@ -45,7 +45,10 @@ calculator::~calculator()
 
 void calculator::setBinMode()
 {
+	ui.mode->setText("BIN MODE");
 	clear_Clicked();
+	m_numberSystem = 0;
+
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(false);
@@ -66,7 +69,9 @@ void calculator::setBinMode()
 
 void calculator::setOctMode()
 {
+	ui.mode->setText("OCT MODE");
 	clear_Clicked();
+
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(true);
@@ -87,7 +92,9 @@ void calculator::setOctMode()
 
 void calculator::setDecMode()
 {
+	ui.mode->setText("DEC MODE");
 	clear_Clicked();
+
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(true);
@@ -108,7 +115,9 @@ void calculator::setDecMode()
 
 void calculator::setHexMode()
 {
+	ui.mode->setText("HEX MODE");
 	clear_Clicked();
+
 	ui.num0Btn->setEnabled(true);
 	ui.num1Btn->setEnabled(true);
 	ui.num2Btn->setEnabled(true);

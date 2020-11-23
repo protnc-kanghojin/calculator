@@ -1,5 +1,6 @@
-#include "calculator.h"
 #include <QtWidgets/QApplication>
+
+#include "calculator.h"
 
 int main(int argc, char *argv[])
 {
