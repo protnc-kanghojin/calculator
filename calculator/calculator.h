@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QList>
+#include <QKeyEvent>
 
 #include "ui_calculator.h"
 
@@ -62,4 +63,7 @@ public slots:
     void remainder_Clicked();
     void groupStart_Clicked();
     void groupEnd_Clicked();
+
+protected:
+    void keyPressEvent(QKeyEvent* event);
 };
