@@ -141,6 +141,7 @@ void calculator::num0_Clicked()
 	int m_result = ui.num0Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num1_Clicked()
@@ -148,6 +149,7 @@ void calculator::num1_Clicked()
 	int m_result = ui.num1Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num2_Clicked()
@@ -155,6 +157,7 @@ void calculator::num2_Clicked()
 	int m_result = ui.num2Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num3_Clicked()
@@ -162,6 +165,7 @@ void calculator::num3_Clicked()
 	int m_result = ui.num3Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num4_Clicked()
@@ -169,6 +173,7 @@ void calculator::num4_Clicked()
 	int m_result = ui.num4Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num5_Clicked()
@@ -176,6 +181,7 @@ void calculator::num5_Clicked()
 	int m_result = ui.num5Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num6_Clicked()
@@ -183,6 +189,7 @@ void calculator::num6_Clicked()
 	int m_result = ui.num6Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num7_Clicked()
@@ -190,6 +197,7 @@ void calculator::num7_Clicked()
 	int m_result = ui.num7Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num8_Clicked()
@@ -197,6 +205,7 @@ void calculator::num8_Clicked()
 	int m_result = ui.num8Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::num9_Clicked()
@@ -204,6 +213,7 @@ void calculator::num9_Clicked()
 	int m_result = ui.num9Btn->text().toInt();
 
 	ui.finalResult->setText(ui.finalResult->text() + QString::number(m_result));
+	m_numberBoard.push_back(m_result);
 }
 
 void calculator::groupStart_Clicked()
@@ -228,6 +238,17 @@ void calculator::clear_Clicked()
 
 void calculator::delete_Clicked()
 {
+	QString result;
+	if (m_numberBoard.size() == 0) return;
+	else
+	{
+		m_numberBoard.pop_back();
+		for (auto iter : m_numberBoard)
+		{
+			result.append(QString::number(iter));
+		}
+		ui.finalResult->setText(result);
+	}
 }
 
 void calculator::result_Clicked()

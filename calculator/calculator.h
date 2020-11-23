@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QList>
 
 #include "ui_calculator.h"
 
@@ -34,6 +35,8 @@ private:
 
     int m_calculateStatus, m_leftNumber, m_result;
     int m_numberSystem; // 0 : bin
+
+    QList <int> m_numberBoard;
 
 public slots:
     // Number button click function
