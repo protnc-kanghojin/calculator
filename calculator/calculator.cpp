@@ -86,6 +86,34 @@ void calculator::keyPressEvent(QKeyEvent* event)
 	case Qt::Key_9:
 		num9_Clicked();
 		break;
+
+	case Qt::Key_Backspace:
+		delete_Clicked();
+		break;
+
+	case Qt::Key_division:
+		division_Clicked();
+		break;
+
+		// ToDo x -> *
+	case Qt::Key_X:
+		multiply_Clicked();
+		break;
+
+	case Qt::Key_Minus:
+		minus_Clicked();
+		break;
+
+	case Qt::Key_Plus:
+		plus_Clicked();
+		break;
+
+	case Qt::Key_Enter:
+		result_Clicked();
+		break;
+
+	default:
+		break;
 	}
 }
 
