@@ -79,7 +79,7 @@ void calculator::keyPressEvent(QKeyEvent* event)
 	case Qt::Key_7:
 		num7_Clicked();
 		break;
-
+	
 	case Qt::Key_8:
 		num8_Clicked();
 		break;
